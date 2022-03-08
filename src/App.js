@@ -40,9 +40,15 @@ class App extends Component {
         </Subject> */}
         <header>
           <h1><a href="/" onClick={function(e){
+            // a 태그를 클릭 시 화면 전환이 되지 않고 값만 출력.
+            // event안의 함수에서의 this는 아무것도 가르키고 있지 않다. -> 뒤에 .bind(this)를 추가해야함.
             console.log(e);
             e.preventDefault();
-          }}>{this.state.subject.title}</a></h1>
+            this.setState({
+              mode:'welcome'
+            });
+            // end
+          }.bind(this)}>{this.state.subject.title}</a></h1>
           {this.state.subject.sub}
         </header>
         <TOC data={this.state.contents}></TOC>
